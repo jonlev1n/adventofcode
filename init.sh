@@ -8,8 +8,14 @@
 #   |- ...
 
 # get the current year
-YEAR=$(date "+ %Y")
-YEAR=${YEAR// /}
+if [ $# -eq 0 ]
+then
+	YEAR=$(date "+ %Y")
+	YEAR=${YEAR// /}
+else
+	YEAR=$1
+fi
+
 if [ ! -d "$YEAR" ]
 then 
 	mkdir $YEAR
@@ -27,7 +33,8 @@ do
 	touch "day$i/day$i.py"
 	touch "day$i/input.txt"
 	echo "import os
-# from aocd import lines, submit
+from aocd import lines, submit, get_data
+
 
 test_data = []
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
