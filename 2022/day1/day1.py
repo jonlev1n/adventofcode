@@ -2,14 +2,14 @@ import os
 
 from aocd import lines, submit
 
-test_data = []
-__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+# test_data = []
+# __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 
-def read_data():
-    with open(os.path.join(__location__, "input.txt")) as input:
-        data = input.read()
-    return data
+# def read_data():
+#     with open(os.path.join(__location__, "input.txt")) as input:
+#         data = input.read()
+#     return data
 
 
 def solve(input):
@@ -26,9 +26,9 @@ def solve(input):
 
 
 ans = solve(lines)
-pt1 = ans[len(ans) - 1]
+l = len(ans)
+pt1 = ans[l - 1]
 submit(pt1, part="a", day=1, year=2022)
 
-pt2 = ans[len(ans) - 1] + ans[len(ans) - 2] + ans[len(ans) - 3]
-print(pt2)
+pt2 = ans[l - 1] + ans[l - 2] + ans[l - 3]
 submit(pt2, part="b", day=1, year=2022)
