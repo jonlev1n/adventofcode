@@ -15,26 +15,17 @@ def solve(input):
     register = {0: 0}
     hot_cycles = [20, 60, 100, 140, 180, 220]
     vals = []
-    for idx, line in enumerate(input):
+    for line in input:
         if "addx" in line:
-            try:
-                v = register[max(register.keys()) + 2]
-            except:
-                v = 0
-            register[max(register.keys()) + 2] = int(line.split()[1]) + v
+            register[max(register.keys()) + 2] = int(line.split()[1])
         if "noop" in line:
-            try:
-                v = register[max(register.keys()) + 1]
-            except:
-                v = 0
-            register[max(register.keys()) + 1] = 0 + v
+            register[max(register.keys()) + 1] = 0
 
-    val = 0
     X = 1
     crt = ""
     crt_position = 0
     crt_max = 39
-    for i in range(1, 241):
+    for i in range(1, max(register.keys()) + 1):
         if crt_position > crt_max:
             crt_position = 0
 
@@ -69,10 +60,10 @@ ans1 = solve(lines)
 submit(ans1, day=10, year=2022, part="a")
 
 ####.###...##..###..####.###...##....##.
-# ....#..#.#..#.#..#.#....#..#.#..#....#.
+#....#..#.#..#.#..#.#....#..#.#..#....#.
 ###..#..#.#....#..#.###..#..#.#.......#.
-# ....###..#....###..#....###..#.......#.
-# ....#.#..#..#.#.#..#....#....#..#.#..#.
+#....###..#....###..#....###..#.......#.
+#....#.#..#..#.#.#..#....#....#..#.#..#.
 ####.#..#..##..#..#.####.#.....##...##..
 
 # output ^^
