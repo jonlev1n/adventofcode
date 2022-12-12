@@ -1,3 +1,4 @@
 advent-of-code-data
 browser-cookie3
+networkx
 numpy
