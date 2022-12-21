@@ -3,3 +3,4 @@ browser-cookie3
 functools
 networkx
 numpy
+sympy
