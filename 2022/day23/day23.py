@@ -51,7 +51,7 @@ def solve(input):
     # reset the order
     global ORDER
     ORDER = ["N", "S", "W", "E"]
-    f2, ans2 = moveElves(f2, 1000000)
+    f2, ans2 = moveElves(f2, 1000000)  # iterations is an arbitrarily high number
     print("ans2 is:", ans2)
 
     return ans1, ans2
