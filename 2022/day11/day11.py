@@ -14,7 +14,7 @@ def read_data():
 
 
 def get_value(s, old, d, r):
-    # s is string, old is list, d is divisor
+    # s is string, old is list, d is modulo
     if not len(old):
         return ([], [])
     s = s[4:]
@@ -40,7 +40,7 @@ def solve(input, rounds, reducer):
             op = line.split("= ")[1]
 
         if "Test" in line:
-            divisor = re.findall(r"\d+", line)[0]
+            modulo = re.findall(r"\d+", line)[0]
 
         if "true" in line:
             true_dest = re.findall(r"\d+", line)[0]
@@ -50,25 +50,25 @@ def solve(input, rounds, reducer):
             monkeys[key] = {
                 "items": [int(i) for i in items],
                 "op": op,
-                "divisor": int(divisor),
+                "modulo": int(modulo),
                 "true_dest": int(true_dest),
                 "false_dest": int(false_dest),
                 "count": 0,
             }
 
     for m in monkeys:
-        supermod *= monkeys[m]["divisor"]
+        supermod *= monkeys[m]["modulo"]
 
     for r in range(0, rounds):
         for m in monkeys.keys():
             monkey = monkeys[m]
             op = monkey["op"]
             items = monkey["items"]
-            divisor = monkey["divisor"]
+            modulo = monkey["modulo"]
             true_dest = monkey["true_dest"]
             false_dest = monkey["false_dest"]
             count = monkey["count"]
-            (td, fd) = get_value(op, items, divisor, reducer)
+            (td, fd) = get_value(op, items, modulo, reducer)
             monkeys[true_dest]["items"] += [x % supermod for x in td]
             monkeys[false_dest]["items"] += [x % supermod for x in fd]
             monkeys[m]["items"] = []
