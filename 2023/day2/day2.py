@@ -45,7 +45,7 @@ def part1():
         if p:
             possible.append(game_id)
     ans = sum(possible)
-    # submit(ans, part="a", day=2, year=2023)
+    submit(ans, part="a", day=2, year=2023)
     # ! CORRECT!
 
 
@@ -64,7 +64,8 @@ def part2():
         powers.append(maxes["red"] * maxes["blue"] * maxes["green"])
     ans = sum(powers)
     submit(ans, part="b", day=2, year=2023)
+    # ! CORRECT
 
 
 # part1()
-part2()
+# part2()
