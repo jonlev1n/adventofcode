@@ -281,35 +281,41 @@ def part1():
 
 
 def part2():
-    locations = []
+
     # maps = test_data_maps
     # _seeds = test_data_seeds
     maps = data_maps
     _seeds = data_seeds
     seed_tuples = [(_seeds[s], _seeds[s + 1]) for s in range(0, len(_seeds), 2)]
-    seeds = []
-    for s in seed_tuples:
-        v, r = s
-        seeds += [x for x in range(v, v + r)]
+    ranges = [range(s, s+r) for (s,r) in seed_tuples]
 
-    for s in seeds:
-        cur_value = s  # init
-        for m in maps.keys():
-            ranges = maps[m]
-            for r in ranges:
-                _dest_start, _source_start, _count = r
-                diff = _source_start - _dest_start
-                if cur_value in range(_source_start, _source_start + _count):
-                    cur_value -= diff
+    # init location to a sufficiently high number - this is a guess based on ranges
+    start_location = 100000000
+    while True:
+        loc = start_location
+        print("location:", loc)
+        for m in reversed(maps.keys()):
+            mappings = maps[m]
+            for m in mappings:
+                _dest_start, _source_start, _count = m
+                diff = _dest_start - _source_start
+                if loc in range(_dest_start, _dest_start + _count):
+                    loc -= diff
                     break
-        locations.append(cur_value)
-    x = min(locations)
-    print(x)
-    return x
+
+        seed = loc
+        for r in ranges:
+            if seed in r:
+                print(seed)
+                return seed
+        start_location += 1
+
+
+
 
 
 # ans1 = part1()
-ans2 = part2()
+# ans2 = part2()
 
 # submit(ans1, part="a", day=5, year=2023) #! CORRECT!
-submit(ans2, part="b", day=5, year=2023)
+# submit(ans2, part="b", day=5, year=2023) #! CORRECT!
