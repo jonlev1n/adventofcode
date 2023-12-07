@@ -145,9 +145,6 @@ def part2():
         elif len(card_keys) == 4:
             handType = "pair"
 
-        if jokers_count > 0:
-            print(hand, jokers_count, "->", cards, "->", handType)
-
         return handType
 
     # data = test_data
@@ -187,4 +184,4 @@ ans1 = part1()
 ans2 = part2()
 
 # submit(ans1, part="a", day=7, year=2023) #! CORRECT!
-submit(ans2, part="b", day=7, year=2023)
+# submit(ans2, part="b", day=7, year=2023) #! CORRECT!
