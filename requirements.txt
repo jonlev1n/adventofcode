@@ -5,3 +5,4 @@ grid
 networkx
 numpy
 sympy
+portion
